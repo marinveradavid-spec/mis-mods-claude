@@ -47,9 +47,17 @@ export const register: Register = on => {
     if (e.props.hasSurvey) return next(e)
     const c = await read($, consejo)
     const { Box, Text, Button } = $.ui.resolve(e)
+    // La franja admite un solo dibujo: se incluye debajo lo que dibujen otros mods.
+    const otros = await next(e).catch(() => null)
+    const conOtros = (mio: JSX.Element) => (
+      <Box flexDirection="column">
+        {mio}
+        {otros}
+      </Box>
+    )
 
     if (await read($, oculto)) {
-      return (
+      return conOtros(
         <Box>
           <Text dimColor>Asesor de modelo en pausa </Text>
           <Button key="ver" label="Activar" onPress={() => update($, oculto, () => false)} />
@@ -57,7 +65,7 @@ export const register: Register = on => {
       )
     }
     if (c === null) {
-      return (
+      return conOtros(
         <Box>
           <Text dimColor>Asesor de modelo: escribe algo y te diré qué modelo conviene</Text>
         </Box>
@@ -72,7 +80,7 @@ export const register: Register = on => {
         ? `estás usando ${c.actual}: gastas más de lo necesario → escribe /model ${c.ideal.toLowerCase()}`
         : `estás usando ${c.actual}: puede quedarse corto → escribe /model ${c.ideal.toLowerCase()}`
 
-    return (
+    return conOtros(
       <Box>
         <Text bold>Modelo ideal: </Text>
         <Text color={coincide ? 'success' : 'warning'} bold>{c.ideal}</Text>

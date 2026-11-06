@@ -1,1 +1,1 @@
-{ "name": "asesor-modelo", "version": "0.1.0", "description": "Te dice qué modelo (Haiku, Sonnet u Opus) conviene para cada cosa que pides", "types": "./types/index.d.ts" }
+{ "name": "asesor-modelo", "version": "0.1.1", "description": "Te dice qué modelo (Haiku, Sonnet u Opus) conviene para cada cosa que pides", "types": "./types/index.d.ts" }

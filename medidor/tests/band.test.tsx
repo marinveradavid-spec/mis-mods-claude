@@ -19,3 +19,15 @@ test('muestra gasto, reinicio y consejo', async ($, on) => {
     await ui.unmount()
   }
 })
+
+test('deja sitio a lo que dibujan otros mods en la misma franja', async ($, on) => {
+  on('clock.now', () => ({ value: 1_000_000 }))
+  on('ui.render', ($, e) => {
+    const { Text } = $.ui.resolve(e)
+    return <Text>otro mod</Text>
+  })
+  const ui = await $.ui.mount({ ...BAND, surface: 'desktop' })
+  expect(await ui.find({ type: 'Text', text: /otro mod/ })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: /Límite 5 h/ })).toBeDefined()
+  await ui.unmount()
+})

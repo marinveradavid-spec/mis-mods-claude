@@ -77,8 +77,11 @@ export const register: Register = on => {
     const { Box, Text } = $.ui.resolve(e)
     const ahora = await $.clock.now()
     const c = consejo(l?.contexto ?? null)
+    // La franja admite un solo dibujo: se incluye debajo lo que dibujen otros mods.
+    const otros = await next(e).catch(() => null)
 
     return (
+      <Box flexDirection="column">
       <Box flexDirection="column" borderStyle="round" paddingX={1}>
         <Box>
           <Text bold>Límite 5 h: </Text>
@@ -102,6 +105,8 @@ export const register: Register = on => {
           <Text color={color(c.pct)}>{c.texto}</Text>
           {l?.costo != null && <Text dimColor> · equivale a ${l.costo.toFixed(2)}</Text>}
         </Box>
+      </Box>
+      {otros}
       </Box>
     )
   })
