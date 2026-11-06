@@ -1,0 +1,1 @@
+{ "name": "medidor", "version": "0.1.0", "description": "Barra siempre visible: gasto de la sesión, cuándo se reinicia y cuándo conviene abrir una conversación nueva", "types": "./types/index.d.ts" }

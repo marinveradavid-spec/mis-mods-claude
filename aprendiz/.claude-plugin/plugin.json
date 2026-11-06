@@ -1,0 +1,1 @@
+{ "name": "aprendiz", "version": "0.1.0", "description": "Ventanita que te explica con microlecciones sencillas lo que va haciendo Claude", "types": "./types/index.d.ts" }

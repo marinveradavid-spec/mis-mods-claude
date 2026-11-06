@@ -1,0 +1,10 @@
+{
+  "name": "mis-mods-claude",
+  "owner": { "name": "marinveradavid-spec" },
+  "plugins": [
+    { "name": "medidor", "source": "./medidor", "description": "Barra siempre visible: gasto de la sesión, cuándo se reinicia y cuándo conviene abrir una conversación nueva" },
+    { "name": "asesor-modelo", "source": "./asesor-modelo", "description": "Te dice qué modelo (Haiku, Sonnet u Opus) conviene para cada cosa que pides" },
+    { "name": "mission-control", "source": "./mission-control", "description": "Panel con el agente principal y los agentes ayudantes, y lo que hace cada uno" },
+    { "name": "aprendiz", "source": "./aprendiz", "description": "Ventanita que te explica con microlecciones sencillas lo que va haciendo Claude" }
+  ]
+}
